@@ -1,1 +1,2 @@
 console.log(`👩`);
+// Set intrval
