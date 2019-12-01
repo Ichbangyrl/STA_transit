@@ -1,11 +1,15 @@
 let api = 'http://52.88.188.196:8080/api/api/where/';
 let key = '?key=TEST';
-
+//Runs On pageload
 console.log(`👩`);
-time();
+runApp();
+
+
+function runApp() {
+    time();
+}
 
 function time() {
-
     $.get(`${api}current-time.json${key}`, function (data) {
         let curtime = new Date(data.data.entry.readableTime);
         let hours = curtime.getHours()
