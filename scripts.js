@@ -12,11 +12,15 @@ function runApp() {
 function time() {
     $.get(`${api}current-time.json${key}`, function (data) {
         let curtime = new Date(data.data.entry.readableTime);
-        let hours = curtime.getHours()
+        let hours = curtime.getHours();
+        let min = curtime.getMinutes();
         if (hours > 12) {
             hours = hours - 12;
-        }
-        $('#app').append(`<h1>${hours}:${curtime.getMinutes()}</h1>`);
+        };
+        if (min < 10) {
+            min = `0${min}`;
+        };
+        $('#app').append(`<h1>${hours}:${min}</h1>`);
     }, "jsonp");
     return time;
 }
