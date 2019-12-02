@@ -26,3 +26,4 @@ function time() {
 }
 
 // How to update -> setintervals
+// Promises
