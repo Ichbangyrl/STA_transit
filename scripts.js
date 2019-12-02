@@ -5,7 +5,7 @@ console.log(`👩`);
 runApp();
 
 
-function runApp() {
+function runApp() {//Add all of your functionss here
     time();
 }
 
@@ -26,4 +26,5 @@ function time() {
 }
 
 // How to update -> setintervals
+// Departure Times are the intrested and the Predicted Departure/Arrival/?Actual? Time 
 // Promises

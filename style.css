@@ -5,8 +5,17 @@ body {
     text-align: center;
 }
 
-#creators {
+footer {
     color: #B3D671;
     position: absolute;
+    display: flex;
     bottom: 5px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.fa-cog {
+    padding-left: 5px;
 }
