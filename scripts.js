@@ -106,10 +106,10 @@ function getRoute() {
         console.log("made it here");
         console.log(data.data);
         for (var i = 0; i < data.data.list.length; i++) {
-            var stop = data.data.list[i]
+            var stop = data.data.list[i];
             var dispName = stop.longName + " " + stop.shortName;
             $("#exampleFormControlSelect1").append(`
-            <option>${dispName}</option>
+            <option value='${stop.id}'>${dispName}</option>
             `);
 
         }
@@ -188,4 +188,8 @@ function popUp(tf) {
         </div>
     `);
     }
+}
+
+function givedata(id) {
+    console.log(id);
 }

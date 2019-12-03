@@ -37,10 +37,13 @@
                 </div>
                 <div class="modal-body">
                     <!-- Form Stops -->
-                    <form id="stops">
+                    <form id="stops" name="stops">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Select Route</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <!-- "jumpto(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].value)" -->
+                            <select class="form-control" name='stopselect'
+                                onChange="givedata(document.stops.stopselect.options[document.stops.stopselect.options.selectedIndex].value)"
+                                id="exampleFormControlSelect1">
 
                             </select>
                         </div>
