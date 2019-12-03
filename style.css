@@ -12,7 +12,7 @@ body {
     width: 200px;
 }
 
-#curtime {
+div.jumbotron {
     /* font-size: 3rem; */
     color: #00B7F1;
 }
