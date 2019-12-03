@@ -1,83 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style.css">
-        <link
-            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-            rel="stylesheet"
-            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-            crossorigin="anonymous">
-        <!-- Latest compiled and minified CSS -->
-        <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-        <!-- Latest compiled JavaScript -->
-        <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <script src="jscolor.js"></script>
-        <script src="scripts.js"></script>
-        <title>STA Dashboard</title>
-    </head>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="jscolor.js"></script>
+    <script src="scripts.js"></script>
+    <title>STA Dashboard</title>
+</head>
 
-    <body>
-        <!-- https://cdn.ewu.edu/wp-content/uploads/2019/07/H_spot_EWUlogo.png -->
-        <img
-            id="logo"
-            src="https://www.spokanetransit.com/files/content/STA_Vert_WithoutTag_RGB.png"
-            alt="logo">
-        <div id="app"></div>
+<body>
+    <!-- https://cdn.ewu.edu/wp-content/uploads/2019/07/H_spot_EWUlogo.png -->
+    <img id="logo" src="https://www.spokanetransit.com/files/content/STA_Vert_WithoutTag_RGB.png" alt="logo">
+    <div id="app"></div>
 
-        <!-- Trigger the modal with a button -->
+    <!-- Trigger the modal with a button -->
 
-        <div class="modal fade" id="stopsForm" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Stops</h4>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Form Stops -->
-                        <form id="stops">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Select Route</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Select Stops</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
+    <div class="modal fade" id="stopsForm" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Stops</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- Form Stops -->
+                    <form id="stops">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Route</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Stops</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
 
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button
-                            id="updateStyle"
-                            type="button"
-                            class="btn btn-primary"
-                            data-dismiss="modal">Save stops</button>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="updateStyle" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                        stops</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Trigger the modal with a button -->
 
@@ -91,69 +82,53 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="settings" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Display Settings</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" action="/action_page.php">
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="pcolor">Primary Color:</label>
-                                <div class="col-sm-10">
-                                    <input id="pcolor" class="jscolor form-control" value="00B7F1">
-                                </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="settings" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Display Settings</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="/action_page.php">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="pcolor">Primary Color:</label>
+                            <div class="col-sm-10">
+                                <input id="pcolor" class="jscolor form-control" value="00B7F1">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="scolor">Secondary Color:</label>
-                            <div class="col-sm-10">
-                                <input id="scolor" class="jscolor form-control" value="B3D671">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="imageurl">Image Link:</label>
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="imageurl"
-                                        value="https://www.spokanetransit.com/files/content/STA_Vert_WithoutTag_RGB.png">
-                                </div>
-                            </div>
-                        </form>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="scolor">Secondary Color:</label>
+                    <div class="col-sm-10">
+                        <input id="scolor" class="jscolor form-control" value="B3D671">
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button
-                            id="updateStyle"
-                            type="button"
-                            class="btn btn-primary"
-                            data-dismiss="modal">Save changes</button>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="imageurl">Image Link:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="imageurl"
+                                value="https://www.spokanetransit.com/files/content/STA_Vert_WithoutTag_RGB.png">
+                        </div>
                     </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="updateStyle" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                        changes</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer class="footer-copyright text-center py-3">
-            <p>Creators: Sarah Adkins & Rachael DeBoer</p>
-            <i
-                id="settings"
-                class="fa fa-cog"
-                aria-hidden="true"
-                data-toggle="modal"
-                data-target="#settings"></i>
-            <input
-                value="Stops"
-                type="button"
-                id="stops"
-                data-toggle="modal"
-                data-target="#stopsForm"></input>
-        </footer>
+    <footer class="footer-copyright text-center py-3">
+        <p>Creators: Sarah Adkins & Rachael DeBoer</p>
+        <i id="settings" class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#settings"></i>
+        <input value="Stops" type="button" id="stops" data-toggle="modal" data-target="#stopsForm"></input>
+    </footer>
 
-    </body>
+</body>
 
 </html>
