@@ -9,7 +9,7 @@ let imageurl = '';
 $(document).ready(start);
 
 function start() {
-    getStops();
+    getRoute();
     console.log(`👩`);
     runApp();
     // let timerId = setInterval(() => runApp(), 30000); //30 sec
@@ -99,14 +99,37 @@ function getTable() {
     }, "jsonp");
 }
 //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
-function getStops() {
-    console.log("WE ARE IN GETSTOPS");
-    $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
-        console.log("made it here");
-        console.log(data.data);
+function getRoute(){
 
-        let stopName = data.data.list[0].longName;
-        console.log(stopName);
+     $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
+         console.log("made it here");
+         console.log(data.data);
+        for(var i=0; i < data.data.list.length; i++){
+            var stop = data.data.list[i]
+            var dispName = stop.longName + " " + stop.shortName;
+            $("#exampleFormControlSelect1").append(`
+            <option>${dispName}</option>
+            `);
+            
+        }
+     }, "jsonp");
+
+}
+
+// function getStops(){
+//     console.log();
+// }
+
+// How to update -> setintervals
+// Departure Times are the intrested and the Predicted Departure/Arrival/?Actual? Time 
+// Promises
+
+//http://52.88.188.196:8080/api/api/where/stops-for-route/STA_66.json?key=
+function getStops() {
+    //UNFINISHED
+    $.get(`${api}stops-for-route/${stopID}.json${key}`, function (data) {
+        console.log("made it here");
+        console.log(stopID);
     }, "jsonp");
 }
 
