@@ -3,6 +3,7 @@ let key = '?key=TEST';
 let pcolor = '';
 let scolor = '';
 let imageurl = '';
+let stopID = 'STA_ELMPUBWF';
 
 //Runs On pageload
 $(document).ready(start);
@@ -14,7 +15,9 @@ function start() {
 }
 
 function runApp() {//Add all of your running functions here
+    // $("#app").replaceWith(`<div id=app></div>`);
     time();
+    getTable();
 }
 
 //Update Style
@@ -45,7 +48,43 @@ function time() {
         </div>
         `);
     }, "jsonp");
-    return time;
+}
+
+function getTable() {
+    $.get(`${api}schedule-for-stop/${stopID}.json${key}`, function (data) {
+        let schedule = data.data.entry.stopRouteSchedules;
+        console.log(schedule);
+        $('#app').append(`
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Route #</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        </table>
+        `);
+        for (let i = 0; i < schedule.length; i++) {
+            console.log(schedule[i].routeId);
+            console.log(schedule[i]);
+            $('#app').append(`
+            <tr>
+            <th scope="col">Route #</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Status</th>
+          </tr>
+            `);
+        }
+        console.log('hey we got here');
+        $("#app").append(`
+        </tbody>
+        <p> WOO </p>
+
+        `);
+    }, "jsonp");
 }
 
 // How to update -> setintervals
