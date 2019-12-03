@@ -5,15 +5,23 @@ body {
     text-align: center;
 }
 
+#logo{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    width: 200px;
+}
+
+#curtime {
+    /* font-size: 3rem; */
+    color: #00B7F1;
+}
+
 footer {
     color: #B3D671;
-    position: absolute;
-    display: flex;
+    /* position: absolute; */
     bottom: 5px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+
 }
 
 .fa-cog {

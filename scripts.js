@@ -1,12 +1,31 @@
 let api = 'http://52.88.188.196:8080/api/api/where/';
 let key = '?key=TEST';
+let pcolor = '';
+let scolor = '';
+let imageurl = '';
+
 //Runs On pageload
-console.log(`👩`);
-runApp();
+$(document).ready(start);
 
+function start() {
+    console.log(`👩`);
+    runApp();
+    $("#updateStyle").click(updateStyles);
+}
 
-function runApp() {//Add all of your functionss here
+function runApp() {//Add all of your running functions here
     time();
+}
+
+//Update Style
+function updateStyles() {
+    pcolor = $("#pcolor").val();
+    scolor = $("#scolor").val();
+    imageurl = $("#imageurl").val();
+    $("body").css("color", `#${pcolor}`);
+    $("#curtime").css("color", `#${pcolor}`);
+    $("footer").css("color", `#${scolor}`);
+    $("#logo").replaceWith(`<img id="logo" src="${imageurl}" alt="logo">`);
 }
 
 function time() {
@@ -20,7 +39,11 @@ function time() {
         if (min < 10) {
             min = `0${min}`;
         };
-        $('#app').append(`<h1>${hours}:${min}</h1>`);
+        $('#app').append(`
+        <div class="jumbotron">
+        <h1 id="curtime">${hours}:${min}</h1>
+        </div>
+        `);
     }, "jsonp");
     return time;
 }
