@@ -41,6 +41,7 @@ function Displaytime() {
         <div class="jumbotron">
         <h1 id="curtime">${curtime}</h1>
         <h2>${stopID}</h2>
+        <div id="busComes"></div>
         </div>
         `);
     }, "jsonp");
@@ -109,10 +110,6 @@ function getStops() {
     }, "jsonp");
 }
 
-// How to update -> setintervals
-// Departure Times are the intrested and the Predicted Departure/Arrival/?Actual? Time 
-// Promises
-
 function getArrival() {
     $.get(`${api}arrivals-and-departures-for-stop/${stopID}.json${key}`, function (data) {
         if (data.data.entry.arrivalsAndDepartures[0] == null) {
@@ -132,7 +129,9 @@ function getArrival() {
             if (nextBus.numberOfStopsAway >= 0) {
                 if (nextBus.numberOfStopsAway < 1) {
                     console.log('pop');
-                    popUp();
+                    popUp(true);
+                } else {
+                    popUp(false);
                 }
                 $('#nextBus').append(`
             <tr  class="bg-warning">
@@ -151,14 +150,18 @@ function getArrival() {
 
 }
 
-function popUp() {
-    console.log('up');
-
-    $('.jumbotron').append(`
-    <div class="alert alert-warning alert-dismissible fade in">
+function popUp(tf) {
+    if (tf) {
+        $('#busComes').replaceWith(`
+    <div id="busComes" class="alert alert-warning alert-dismissible fade in">
     <audio autoplay><source src="mysound.mp3" type="audio/mpeg" /></audio>
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+        <h1><strong>The Next Bus is One Stop Away</strong></h1>
     </div>
-`);
+    `);
+    } else {
+        $('#busComes').replaceWith(`
+        <div id="busComes">
+        </div>
+    `);
+    }
 }
