@@ -1,6 +1,9 @@
 let api = 'http://52.88.188.196:8080/api/api/where/';
 let key = '?key=TEST';
 let stopID = 'STA_ELMPUBWF';
+let pcolor = '';
+let scolor = '';
+let imageurl = '';
 
 //Runs On pageload
 $(document).ready(start);
@@ -13,16 +16,17 @@ function start() {
 }
 
 function runApp() {//Add all of your running functions here
-    // $("#app").replaceWith(`<div id=app></div>`);
+    $("#app").replaceWith(`<div id=app></div>`);
     Displaytime();
     getTable();
 }
 
 //Update Style
 function updateStyles() {
-    let pcolor = $("#pcolor").val();
-    let scolor = $("#scolor").val();
-    let imageurl = $("#imageurl").val();
+    console.log(`yo`);
+    pcolor = $("#pcolor").val();
+    scolor = $("#scolor").val();
+    imageurl = $("#imageurl").val();
     $("body").css("color", `#${pcolor}`);
     $("#curtime").css("color", `#${pcolor}`);
     $("footer").css("color", `#${scolor}`);
