@@ -86,7 +86,6 @@ function getTable() {
             // let time = Math.round(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime.getTime() / 1000);
             let arrivaltime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime * 1000.0);
             let departuretime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].departureTime * 1000.0);
-            console.log(schedule[i]);
             $('#routesTable').append(`
             <tr>
             <td></td>
@@ -152,7 +151,6 @@ function getArrival() {
 
             if (nextBus.numberOfStopsAway >= 0) {
                 if (nextBus.numberOfStopsAway < 1) {
-                    console.log('pop');
                     popUp(true);
                 } else {
                     popUp(false);
