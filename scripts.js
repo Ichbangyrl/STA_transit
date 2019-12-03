@@ -12,6 +12,8 @@ function start() {
     getStops();
     console.log(`👩`);
     runApp();
+    let timerId = setInterval(() => runApp(), 30000); //30 sec
+    setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 60000); //One Min
     $("#updateStyle").click(updateStyles);
 }
 
@@ -23,7 +25,6 @@ function runApp() {//Add all of your running functions here
 
 //Update Style
 function updateStyles() {
-    console.log(`yo`);
     pcolor = $("#pcolor").val();
     scolor = $("#scolor").val();
     imageurl = $("#imageurl").val();
@@ -61,7 +62,7 @@ function getTable() {
     $.get(`${api}schedule-for-stop/${stopID}.json${key}`, function (data) {
         let schedule = data.data.entry.stopRouteSchedules;
         $('#app').append(`
-        <table class="table">
+        <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">Route #</th>
@@ -77,12 +78,14 @@ function getTable() {
         `);
         for (let i = 0; i < schedule.length; i++) {
             // let time = Math.round(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime.getTime() / 1000);
-            let atime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime * 1000.0);
+            let arrivaltime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime * 1000.0);
+            let departuretime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].departureTime * 1000.0);
+
             $('#routesTable').append(`
             <tr>
-                <th scope="row">${schedule[i].routeId}</th>
-                <td>${schedule[i].stopRouteDirectionSchedules[0].tripHeadsign}</td>
-                <td>${formatTime(atime)}</td>
+                <th scope="row">${schedule[i].routeId} ${schedule[i].stopRouteDirectionSchedules[0].tripHeadsign}</th>
+                <td>${formatTime(arrivaltime)}</td>
+                <td>${formatTime(departuretime)}</td>
                 <td>@twitter</td>
             </tr>
             `);
