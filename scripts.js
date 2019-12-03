@@ -2,6 +2,7 @@ let api = 'http://52.88.188.196:8080/api/api/where/';
 let key = '?key=TEST';
 let stopID = 'STA_ELMPUBWF';
 let routeID = "";
+let stopName = "";
 let pcolor = '';
 let scolor = '';
 let imageurl = '';
@@ -200,6 +201,6 @@ function popUp(tf) {
 function givedata(id) {
     console.log(id);
     routeID = id;
-    $("#setStopID").html(`<p>${routeID.stop}</p>`)
+    $("#setStopID").html(`<p>${routeID}</p>`)
     getStops();
 }
