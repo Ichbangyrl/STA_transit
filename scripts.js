@@ -70,7 +70,7 @@ function getTable() {
         <thead id="nextBus">
           <tr>
           <th scope="col">Stops aways</th>
-            <th scope="col">Route #</th>
+            <th scope="col">Route Number & Name</th>
             <th scope="col">Scheduled/Estimated Arrival Time</th>
             <th scope="col">Status</th>
             
