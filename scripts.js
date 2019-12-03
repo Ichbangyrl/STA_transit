@@ -30,6 +30,7 @@ function updateStyles() {
     imageurl = $("#imageurl").val();
     $("body").css("color", `#${pcolor}`);
     $("div.jumbotron").css("color", `#${pcolor}`);
+    $(".btn.btn-primary").css("background-color", `#${pcolor}`);
     $("footer").css("color", `#${scolor}`);
     $("#logo").replaceWith(`<img id="logo" src="${imageurl}" alt="logo">`);
 }
@@ -99,20 +100,20 @@ function getTable() {
     }, "jsonp");
 }
 //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
-function getRoute(){
+function getRoute() {
 
-     $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
-         console.log("made it here");
-         console.log(data.data);
-        for(var i=0; i < data.data.list.length; i++){
+    $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
+        console.log("made it here");
+        console.log(data.data);
+        for (var i = 0; i < data.data.list.length; i++) {
             var stop = data.data.list[i]
             var dispName = stop.longName + " " + stop.shortName;
             $("#exampleFormControlSelect1").append(`
             <option>${dispName}</option>
             `);
-            
+
         }
-     }, "jsonp");
+    }, "jsonp");
 
 }
 
@@ -178,7 +179,7 @@ function popUp(tf) {
         $('#busComes').replaceWith(`
     <div id="busComes" class="alert alert-warning alert-dismissible fade in">
     <audio autoplay><source src="mysound.mp3" type="audio/mpeg" /></audio>
-        <h1><strong>The Next Bus Will Arriive Shortly</strong></h1>
+        <h1><strong>The Next Bus Will Arrive Shortly</strong></h1>
     </div>
     `);
     } else {

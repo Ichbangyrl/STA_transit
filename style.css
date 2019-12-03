@@ -27,3 +27,7 @@ footer {
 .fa-cog {
     padding-left: 5px;
 }
+
+.btn.btn-primary {
+    background-color: #00B7F1;
+}
