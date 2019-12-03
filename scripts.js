@@ -56,7 +56,6 @@ function formatTime(humanreadble) {
 function getTable() {
     $.get(`${api}schedule-for-stop/${stopID}.json${key}`, function (data) {
         let schedule = data.data.entry.stopRouteSchedules;
-        console.log(schedule);
         $('#app').append(`
         <table class="table">
         <thead>
@@ -73,8 +72,6 @@ function getTable() {
         </table>
         `);
         for (let i = 0; i < schedule.length; i++) {
-            // console.log(schedule[i].routeId);
-            console.log(schedule[i].stopRouteDirectionSchedules[0]);
             // let time = Math.round(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime.getTime() / 1000);
             let atime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime * 1000.0);
             $('#routesTable').append(`
@@ -86,7 +83,6 @@ function getTable() {
             </tr>
             `);
         }
-        console.log('hey we got here');
         $("#app").append(`
 
         `);
