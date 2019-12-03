@@ -48,7 +48,41 @@ function time() {
 }
 
 function getTable() {
+    $.get(`${api}schedule-for-stop/${stopID}.json${key}`, function (data) {
+        let schedule = data.data.entry.stopRouteSchedules;
+        console.log(schedule);
+        $('#app').append(`
+        <table class="table">
+        <thead >
+          <tr>
+            <th scope="col">Route #</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        </table>
+        `);
+        for (let i = 0; i < schedule.length; i++) {
+            // console.log(schedule[i].routeId);
+            console.log(schedule[i].stopRouteDirectionSchedules[0]);
+            // let time = Math.round(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime.getTime() / 1000);
+            let atime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime * 1000.0);
+            $('#app').append(`
+            <table class="table">
+            <tr>
+                <th scope="row">${schedule[i].routeId}</th>
+                <td>${schedule[i].stopRouteDirectionSchedules[0].tripHeadsign}</td>
+                <td>${atime}</td>
+                <td>@twitter</td>
+            </tr>
+            `);
+        }
+        console.log('hey we got here');
+        $("#app").append(`
 
+        `);
+    }, "jsonp");
 }
 
 // How to update -> setintervals
