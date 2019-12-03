@@ -1,6 +1,7 @@
 let api = 'http://52.88.188.196:8080/api/api/where/';
 let key = '?key=TEST';
 let stopID = 'STA_ELMPUBWF';
+let routeID = "";
 let pcolor = '';
 let scolor = '';
 let imageurl = '';
@@ -41,7 +42,7 @@ function Displaytime() {
         $('#app').append(`
         <div class="jumbotron">
         <h1 id="curtime">${curtime}</h1>
-        <h2>${stopID}</h2>
+        <h2 id="setStopID">${stopID}</h2>
         <div id="busComes"></div>
         </div>
         `);
@@ -129,7 +130,15 @@ function getStops() {
     //UNFINISHED
     $.get(`${api}stops-for-route/${stopID}.json${key}`, function (data) {
         console.log("made it here");
-        console.log(stopID);
+        console.log("GetStops id: " + stopID);
+        for (var i = 0; i < data.data.list.length; i++) {
+            var stop = data.data.list[i];
+            var dispName = stop.longName + " " + stop.shortName;
+            $("#exampleFormControlSelect1").append(`
+            <option value='${stop.id}'>${dispName}</option>
+            `);
+
+        }
     }, "jsonp");
 }
 
@@ -190,4 +199,7 @@ function popUp(tf) {
 
 function givedata(id) {
     console.log(id);
+    routeID = id;
+    $("#setStopID").html(`<p>${routeID.stop}</p>`)
+    getStops();
 }
