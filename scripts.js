@@ -14,7 +14,7 @@ function start() {
 
 function runApp() {//Add all of your running functions here
     // $("#app").replaceWith(`<div id=app></div>`);
-    time();
+    Displaytime();
     getTable();
 }
 
@@ -29,23 +29,28 @@ function updateStyles() {
     $("#logo").replaceWith(`<img id="logo" src="${imageurl}" alt="logo">`);
 }
 
-function time() {
+function Displaytime() {
     $.get(`${api}current-time.json${key}`, function (data) {
-        let curtime = new Date(data.data.entry.readableTime);
-        let hours = curtime.getHours();
-        let min = curtime.getMinutes();
-        if (hours > 12) {
-            hours = hours - 12;
-        };
-        if (min < 10) {
-            min = `0${min}`;
-        };
+        let curtime = formatTime(data.data.entry.time);
         $('#app').append(`
         <div class="jumbotron">
-        <h1 id="curtime">${hours}:${min}</h1>
+        <h1 id="curtime">${curtime}</h1>
         </div>
         `);
     }, "jsonp");
+}
+
+function formatTime(humanreadble) {
+    let fulldate = new Date(humanreadble);
+    let hours = fulldate.getHours();
+    let min = fulldate.getMinutes();
+    if (hours > 12) {
+        hours = hours - 12;
+    };
+    if (min < 10) {
+        min = `0${min}`;
+    };
+    return (`${hours}:${min}`);
 }
 
 function getTable() {
@@ -54,7 +59,7 @@ function getTable() {
         console.log(schedule);
         $('#app').append(`
         <table class="table">
-        <thead >
+        <thead>
           <tr>
             <th scope="col">Route #</th>
             <th scope="col">Arrival</th>
@@ -62,6 +67,9 @@ function getTable() {
             <th scope="col">Status</th>
           </tr>
         </thead>
+        <tbody id="routesTable">
+
+        </tbody>
         </table>
         `);
         for (let i = 0; i < schedule.length; i++) {
@@ -69,12 +77,11 @@ function getTable() {
             console.log(schedule[i].stopRouteDirectionSchedules[0]);
             // let time = Math.round(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime.getTime() / 1000);
             let atime = new Date(schedule[i].stopRouteDirectionSchedules[0].scheduleStopTimes[0].arrivalTime * 1000.0);
-            $('#app').append(`
-            <table class="table">
+            $('#routesTable').append(`
             <tr>
                 <th scope="row">${schedule[i].routeId}</th>
                 <td>${schedule[i].stopRouteDirectionSchedules[0].tripHeadsign}</td>
-                <td>${atime}</td>
+                <td>${formatTime(atime)}</td>
                 <td>@twitter</td>
             </tr>
             `);
@@ -86,15 +93,15 @@ function getTable() {
     }, "jsonp");
 }
 //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
-function getStops(){
+function getStops() {
     console.log("WE ARE IN GETSTOPS");
-     $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
-         console.log("made it here");
-         console.log(data.data);
+    $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
+        console.log("made it here");
+        console.log(data.data);
 
-         let stopName = data.data.list[0].longName;
-         console.log(stopName);
-     }, "jsonp");
+        let stopName = data.data.list[0].longName;
+        console.log(stopName);
+    }, "jsonp");
 }
 
 // How to update -> setintervals
