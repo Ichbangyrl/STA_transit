@@ -55,7 +55,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="updateStyle" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                    <button id="updateStop" type="button" class="btn btn-primary" data-dismiss="modal">Save
                         stops</button>
                 </div>
             </div>
@@ -64,17 +64,7 @@
 
     <!-- Trigger the modal with a button -->
 
-    <!-- Disp Settings Modal -->
-    <div class="modal fade" id="settings" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Display Settings</h4>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="settings" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -97,13 +87,14 @@
                             <div class="col-sm-10">
                                 <input id="scolor" class="jscolor form-control" value="B3D671">
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="imageurl">Image Link:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="imageurl"
-                                        value="https://www.spokanetransit.com/files/content/STA_Vert_WithoutTag_RGB.png">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="imageurl">Image Link:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="imageurl"
+                                    value="https://www.spokanetransit.com/files/content/STA_Vert_WithoutTag_RGB.png">
                             </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -119,7 +110,7 @@
     <footer class="footer-copyright text-center py-3">
         <p>Creators: Sarah Adkins & Rachael DeBoer</p>
         <i id="settings" class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#settings"></i>
-        <input value="Stops" type="button" id="stops" data-toggle="modal" data-target="#stopsForm"></input>
+        <i class="fa fa-bus" aria-hidden="true" id="stops" data-toggle="modal" data-target="#stopsForm"></i>
     </footer>
 
 </body>
