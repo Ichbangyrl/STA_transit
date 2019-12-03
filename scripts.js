@@ -10,7 +10,7 @@ $(document).ready(start);
 
 function start() {
     getRoute();
-    console.log(`👩`);
+    console.log(`👩💻💻👩`);
     runApp();
     // let timerId = setInterval(() => runApp(), 30000); //30 sec
     // setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 60000); //One Min
