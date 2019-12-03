@@ -155,7 +155,7 @@ function popUp(tf) {
         $('#busComes').replaceWith(`
     <div id="busComes" class="alert alert-warning alert-dismissible fade in">
     <audio autoplay><source src="mysound.mp3" type="audio/mpeg" /></audio>
-        <h1><strong>The Next Bus is One Stop Away</strong></h1>
+        <h1><strong>The Next Bus Will Arriive Shortly</strong></h1>
     </div>
     `);
     } else {
