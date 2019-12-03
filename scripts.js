@@ -9,6 +9,7 @@ let stopID = 'STA_ELMPUBWF';
 $(document).ready(start);
 
 function start() {
+    getStops();
     console.log(`👩`);
     runApp();
     $("#updateStyle").click(updateStyles);
@@ -53,7 +54,7 @@ function time() {
 function getTable() {
     $.get(`${api}schedule-for-stop/${stopID}.json${key}`, function (data) {
         let schedule = data.data.entry.stopRouteSchedules;
-        console.log(schedule);
+        //console.log(schedule);
         $('#app').append(`
         <table class="table">
         <thead>
@@ -67,8 +68,8 @@ function getTable() {
         </table>
         `);
         for (let i = 0; i < schedule.length; i++) {
-            console.log(schedule[i].routeId);
-            console.log(schedule[i]);
+           // console.log(schedule[i].routeId);
+            //console.log(schedule[i]);
             $('#app').append(`
             <tr>
             <th scope="col">Route #</th>
@@ -78,12 +79,21 @@ function getTable() {
           </tr>
             `);
         }
-        console.log('hey we got here');
+        //console.log('hey we got here');
         $("#app").append(`
         </tbody>
         <p> WOO </p>
 
         `);
+    }, "jsonp");
+}
+//http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
+function getStops(){
+    console.log("WE ARE IN GETSTOPS");
+    $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
+        console.log("made it here");
+        let stopName = data.list.longName;
+        console.log(stopName);
     }, "jsonp");
 }
 
