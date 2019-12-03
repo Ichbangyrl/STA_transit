@@ -129,14 +129,14 @@ function getRoute() {
 //http://52.88.188.196:8080/api/api/where/stops-for-route/STA_66.json?key=
 function getStops() {
     //UNFINISHED
-    $.get(`${api}stops-for-route/${stopID}.json${key}`, function (data) {
-        console.log("made it here");
+    $.get(`${api}stops-for-route/${routeID}.json${key}`, function (data) {
+        console.log(data.data.entry.stopIds);
         console.log("GetStops id: " + stopID);
-        for (var i = 0; i < data.data.list.length; i++) {
-            var stop = data.data.list[i];
-            var dispName = stop.longName + " " + stop.shortName;
-            $("#exampleFormControlSelect1").append(`
-            <option value='${stop.id}'>${dispName}</option>
+        for (var i = 0; i < data.data.entry.stopIds.length; i++) {
+            var stop = data.data.entry.stopIds[i];
+            //var dispName = stop.longName + " " + stop.shortName;
+            $("#exampleFormControlSelect2").append(`
+            <option value='${stop.id}'>${stop}</option>
             `);
 
         }
@@ -201,6 +201,6 @@ function popUp(tf) {
 function givedata(id) {
     console.log(id);
     routeID = id;
-    $("#setStopID").html(`<p>${routeID}</p>`)
+   // $("#setStopID").html(`<p>${routeID}</p>`)
     getStops();
 }
