@@ -39,8 +39,8 @@ function Displaytime() {
         let curtime = formatTime(data.data.entry.time);
         $('#app').append(`
         <div class="jumbotron">
-        <h1>${stopID}</h1>
         <h1 id="curtime">${curtime}</h1>
+        <h2>${stopID}</h2>
         </div>
         `);
     }, "jsonp");
@@ -128,11 +128,13 @@ function getArrival() {
             if (nextBus.tripStatus.status == 'SCHEDULED') {
                 status = 'On Time';
             }
-            if (nextBus.numberOfStopsAway < 1) {
-                console.log('pop');
-                popUp();
-            }
-            $('#nextBus').append(`
+
+            if (nextBus.numberOfStopsAway >= 0) {
+                if (nextBus.numberOfStopsAway < 1) {
+                    console.log('pop');
+                    popUp();
+                }
+                $('#nextBus').append(`
             <tr  class="bg-warning">
             <td>${nextBus.numberOfStopsAway}</td>
                 <th scope="row">${nextBus.routeShortName} - ${nextBus.routeLongName}</th>
@@ -141,6 +143,8 @@ function getArrival() {
                 
             </tr>
             `);
+            }
+
         }
 
     }, "jsonp");
