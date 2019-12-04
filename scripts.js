@@ -11,13 +11,13 @@ let imageurl = '';
 $(document).ready(start);
 
 function start() {
-    
+
     getRoute();
     $('#stopModal').modal('toggle');
     console.log(`👩💻Sarah & Rachael💻👩`);
     runApp();
-    // let timerId = setInterval(() => runApp(), 30000); //30 sec
-    // setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 14400000); //One Min
+    let timerId = setInterval(() => runApp(), 30000); //30 sec
+    setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 14400000); //One Min
     $("#updateStyle").click(updateStyles);
     $("#updateStop").click(givedata2);
 }
@@ -83,10 +83,10 @@ function getTable() {
         <thead id="nextBus">
           <tr>
           <th scope="col">Stops aways</th>
+            <th scope="col">Status</th>
             <th scope="col">Route Number & Name</th>
             <th scope="col">Scheduled/Estimated Arrival Time</th>
-            <th scope="col">Status</th>
-            
+            <th scope="col">Departure Time</th>
           </tr>
         </thead>
         <tbody id="routesTable">
@@ -103,8 +103,9 @@ function getTable() {
             <tr>
             <td></td>
                 <th scope="row">${schedule[i].routeId} ${schedule[i].stopRouteDirectionSchedules[0].tripHeadsign}</th>
-                <td>${formatTime(arrivaltime)}</td>
                 <td>Scheduled</td>
+                <td>${formatTime(arrivaltime)}</td>
+                <td>${formatTime(departuretime)}</td>
             </tr>
             `);
         }
@@ -159,8 +160,9 @@ function getArrival() {
         } else {
             let nextBus = data.data.entry.arrivalsAndDepartures[0];
             let arrivalTime = formatTime(nextBus.predictedArrivalTime);
+            let departureTime = formatTime(nextBus.predictedDepartureTime);
             let status = nextBus.tripStatus.status
-            if (nextBus.tripStatus.status == 'SCHEDULED') {
+            if (nextBus.tripStatus.status == 'SCHEDULED' || nextBus.tripStatus.status == 'default') {
                 status = 'On Time';
             }
 
@@ -174,8 +176,9 @@ function getArrival() {
             <tr  class="bg-warning">
             <td>${nextBus.numberOfStopsAway}</td>
                 <th scope="row">${nextBus.routeShortName} - ${nextBus.routeLongName}</th>
-                <td>${arrivalTime}</td>
                 <td>${status}</td>
+                <td>${arrivalTime}</td>
+                <td>${departureTime}</td>
                 
             </tr>
             `);
