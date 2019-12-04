@@ -201,6 +201,12 @@ function popUp(tf) {
 function givedata(id) {
     console.log(id);
     routeID = id;
-   // $("#setStopID").html(`<p>${routeID}</p>`)
     getStops();
+}
+function givedata2(data){
+    console.log("THIS HERE: " + data);
+    stopID = data;
+    $('#setStopID').replaceWith(`
+    <h2 id="setStopID">${data}</h2>   
+    `);
 }
