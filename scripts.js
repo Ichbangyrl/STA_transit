@@ -13,7 +13,7 @@ $(document).ready(start);
 function start() {
     getRoute();
     $('#stopModal').modal('toggle');
-    console.log(`👩`);
+    console.log(`👩💻Sarah & Rachael💻👩`);
     runApp();
     // let timerId = setInterval(() => runApp(), 30000); //30 sec
     // setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 14400000); //One Min
