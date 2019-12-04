@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
@@ -28,7 +26,7 @@
 
     <!-- Trigger the modal with a button -->
 
-    <div class="modal fade" id="stopsForm" role="dialog">
+    <div id="stopModal" class="modal fade" id="stopsForm" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,8 +50,7 @@
 
                         <div class="form-group">
                             <label for="exampleFormControlSelect2">Select Stops</label>
-                            <select class="form-control"  name="stopselect" 
-                            id="exampleFormControlSelect2">
+                            <select class="form-control" name="stopselect" id="exampleFormControlSelect2">
 
                             </select>
                         </div>
@@ -73,7 +70,7 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="settings" role="dialog">
+    <div id="styleModal" class="modal fade" id="settings" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -115,8 +112,6 @@
     </div>
 
     <footer class="footer-copyright text-center py-3">
-        <i id="settings" class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#settings"></i>
-        <i class="fa fa-bus" aria-hidden="true" id="stops" data-toggle="modal" data-target="#stopsForm"></i>
         <p>Creators: Sarah Adkins & Rachael DeBoer</p>
     </footer>
 
