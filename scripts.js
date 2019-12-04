@@ -17,6 +17,7 @@ function start() {
     // let timerId = setInterval(() => runApp(), 30000); //30 sec
     // setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 60000); //One Min
     $("#updateStyle").click(updateStyles);
+    $("#updateStop").click(givedata2);
 }
 
 function runApp() {//Add all of your running functions here
@@ -130,13 +131,12 @@ function getRoute() {
 function getStops() {
     //UNFINISHED
     $.get(`${api}stops-for-route/${routeID}.json${key}`, function (data) {
-        console.log(data.data.entry.stopIds);
         console.log("GetStops id: " + stopID);
         for (var i = 0; i < data.data.entry.stopIds.length; i++) {
             var stop = data.data.entry.stopIds[i];
             //var dispName = stop.longName + " " + stop.shortName;
             $("#exampleFormControlSelect2").append(`
-            <option value='${stop.id}'>${stop}</option>
+            <option value='${stop}'>${stop}</option>
             `);
 
         }
@@ -203,10 +203,10 @@ function givedata(id) {
     routeID = id;
     getStops();
 }
-function givedata2(data){
-    console.log("THIS HERE: " + data);
-    stopID = data;
+function givedata2(){
+    stopID = $("#exampleFormControlSelect2 option:selected").val();
+   // console.log(stopID + " vs " + thing);
     $('#setStopID').replaceWith(`
-    <h2 id="setStopID">${data}</h2>   
+     <h2 id="setStopID">${stopID}</h2>   
     `);
 }
