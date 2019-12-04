@@ -11,6 +11,7 @@ let imageurl = '';
 $(document).ready(start);
 
 function start() {
+    
     getRoute();
     console.log(`👩`);
     runApp();
