@@ -20,7 +20,8 @@ function start() {
     $("#updateStop").click(givedata2);
 }
 
-function runApp() {//Add all of your running functions here
+//Add all of your AutoUpdating functions here
+function runApp() {
     $("#app").replaceWith(`<div id=app></div>`);
     Displaytime();
     getTable();
@@ -38,6 +39,7 @@ function updateStyles() {
     $("#logo").replaceWith(`<img id="logo" src="${imageurl}" alt="logo">`);
 }
 
+//Displays Time
 function Displaytime() {
     $.get(`${api}current-time.json${key}`, function (data) {
         let curtime = formatTime(data.data.entry.time);
@@ -51,6 +53,7 @@ function Displaytime() {
     }, "jsonp");
 }
 
+// Formats Time to human readable
 function formatTime(humanreadble) {
     let fulldate = new Date(humanreadble);
     let hours = fulldate.getHours();
@@ -64,6 +67,7 @@ function formatTime(humanreadble) {
     return (`${hours}:${min}`);
 }
 
+// Creates Table
 function getTable() {
     // <th scope="col">Departure Time(if different)</th>
     $.get(`${api}schedule-for-stop/${stopID}.json${key}`, function (data) {
@@ -101,9 +105,9 @@ function getTable() {
 
     }, "jsonp");
 }
+
 //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
 function getRoute() {
-
     $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
         console.log("made it here");
         console.log(data.data);
