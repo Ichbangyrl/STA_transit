@@ -73,7 +73,7 @@ function getTable() {
     $.get(`${api}schedule-for-stop/${stopID}.json${key}`, function (data) {
         let schedule = data.data.entry.stopRouteSchedules;
         $('#app').append(`
-        <table class="table table-bordered">
+        <table id="table" class="table table-bordered">
         <thead id="nextBus">
           <tr>
           <th scope="col">Stops aways</th>
@@ -207,10 +207,25 @@ function givedata(id) {
     routeID = id;
     getStops();
 }
-function givedata2(){
+function givedata2() {
     stopID = $("#exampleFormControlSelect2 option:selected").val();
-   // console.log(stopID + " vs " + thing);
-    $('#setStopID').replaceWith(`
-     <h2 id="setStopID">${stopID}</h2>   
+    // console.log(stopID + " vs " + thing);
+
+    clearTable();
+    getTable();
+    getName();
+}
+
+function getName() {
+    $.get(`${api}stop/${stopID}.json${key}`, function (data) {
+        stopName = data.data.entry.name;
+        $('#setStopID').replaceWith(`
+     <h2 id="setStopID">${stopName}</h2>   
     `);
+
+    }, "jsonp");
+}
+
+function clearTable() {
+    $('#table').replaceWith('');
 }
