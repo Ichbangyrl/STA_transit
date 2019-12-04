@@ -13,13 +13,18 @@ $(document).ready(start);
 function start() {
     
     getRoute();
+    $('#stopModal').modal('toggle');
     console.log(`👩`);
     runApp();
     // let timerId = setInterval(() => runApp(), 30000); //30 sec
-    // setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 60000); //One Min
+    // setTimeout(() => { clearInterval(timerId); alert('Clock Stopped'); }, 14400000); //One Min
     $("#updateStyle").click(updateStyles);
     $("#updateStop").click(givedata2);
 }
+
+// $(window).on('load', function () {
+//     $('#updateStop').modal('show');
+// });
 
 //Add all of your AutoUpdating functions here
 function runApp() {
@@ -47,7 +52,7 @@ function Displaytime() {
         $('#app').append(`
         <div class="jumbotron">
         <h1 id="curtime">${curtime}</h1>
-        <h2 id="setStopID">${stopID}</h2>
+        <h2 id="setStopID">${stopName}</h2>
         <div id="busComes"></div>
         </div>
         `);
@@ -207,6 +212,7 @@ function givedata2() {
     clearTable();
     getTable();
     getName();
+    $('#styleModal').modal('toggle');
 }
 
 function getName() {
