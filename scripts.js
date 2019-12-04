@@ -109,8 +109,6 @@ function getTable() {
 //http://52.88.188.196:8080/api/api/where/routes-for-agency/STA.json?key=TEST
 function getRoute() {
     $.get(`${api}routes-for-agency/STA.json${key}`, function (data) {
-        console.log("made it here");
-        console.log(data.data);
         for (var i = 0; i < data.data.list.length; i++) {
             var stop = data.data.list[i];
             var dispName = stop.longName + " " + stop.shortName;
@@ -123,9 +121,7 @@ function getRoute() {
 
 }
 
-// function getStops(){
-//     console.log();
-// }
+
 
 // How to update -> setintervals
 // Departure Times are the intrested and the Predicted Departure/Arrival/?Actual? Time 
@@ -133,12 +129,11 @@ function getRoute() {
 
 //http://52.88.188.196:8080/api/api/where/stops-for-route/STA_66.json?key=
 function getStops() {
-    //UNFINISHED
+
     $.get(`${api}stops-for-route/${routeID}.json${key}`, function (data) {
-        console.log("GetStops id: " + stopID);
         for (var i = 0; i < data.data.entry.stopIds.length; i++) {
             var stop = data.data.entry.stopIds[i];
-            //var dispName = stop.longName + " " + stop.shortName;
+            
             $("#exampleFormControlSelect2").append(`
             <option value='${stop}'>${stop}</option>
             `);
@@ -203,13 +198,11 @@ function popUp(tf) {
 }
 
 function givedata(id) {
-    console.log(id);
     routeID = id;
     getStops();
 }
 function givedata2(){
     stopID = $("#exampleFormControlSelect2 option:selected").val();
-   // console.log(stopID + " vs " + thing);
     $('#setStopID').replaceWith(`
      <h2 id="setStopID">${stopID}</h2>   
     `);
